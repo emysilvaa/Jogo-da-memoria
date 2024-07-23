@@ -18,4 +18,21 @@ h1 {
     display: grid;
     grid-template-columns: repeat(4, 100px);
     grid-gap: 10px;
+    justify-content: center;
+    align-items: center;
+    margin: 15px;
+    background-color: rgb(95, 95, 158);
+}
+
+.cartas {
+    width: 100px;
+    height: 150px;
+    padding: 10px;
+    background-color: blanchedalmond;
+    margin: 10px;
+    align-content: center;
+    align-items: center;
+    border-radius: 10px;
+    
+
 }
