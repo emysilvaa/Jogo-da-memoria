@@ -18,21 +18,22 @@ h1 {
     display: grid;
     grid-template-columns: repeat(4, 100px);
     grid-gap: 10px;
-    justify-content: center;
-    align-items: center;
-    margin: 15px;
-    background-color: rgb(95, 95, 158);
+
 }
 
 .cartas {
     width: 100px;
     height: 150px;
-    padding: 10px;
-    background-color: blanchedalmond;
-    margin: 10px;
-    align-content: center;
-    align-items: center;
+    background-color: rgb(104, 77, 35);
     border-radius: 10px;
-    
+    cursor: pointer;
+    transform: rotateY(0); /*posição inicial da carta, 0º*/
+    transition: transform 0.3s;    
+
+}
+
+.cartas.flipped {
+    background-color: #d6c635;
+    transform: rotateY(180deg); /*isso eh pra a cartar girar, o 180 são os graus que ela vai virar*/
 
 }
