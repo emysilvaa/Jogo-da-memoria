@@ -49,13 +49,13 @@ const revealCard = ({target}) => {
         return;
     }
 
-    if (firstCard === ''){
+    if (firstCard === '') {
         target.parentNode.classList.add('reveal-card');
-        firstCard = target.parantNode;
+        firstCard = target.parentNode;
 
     } else if (secondCard === '') {
         target.parentNode.classList.add('reveal-card');
-        secondCard = target.parantNode; 
+        secondCard = target.parentNode; 
 
         checkCards();
     }
@@ -69,25 +69,25 @@ const createCard = (character) => {
     const front = createElement('div', 'face front');
     const back = createElement('div', 'face back');
 
-    
-    front.style.backgroundImage = `url('../images${character}.jpg')`;
+    front.style.backgroundImage = `url('../Jogo-da-memoria/images/${character}.jpg')`;
 
     card.appendChild(front);
     card.appendChild(back);
 
-    card.addEventListener('click', revealCard)
-    card.setAttribute('data-character', character)
+    card.addEventListener('click', revealCard);
+    card.setAttribute('data-character', character);
 
     return card;
 };
 
 const createBoard = () => {
-
     const duplicatedeCharacters = [ ...characters, ...characters ];
-    const shuffle = duplicatedeCharacters.sort(() => Math.random() - 0.5);
+
+    const shuffledArray = duplicatedeCharacters.sort(() => Math.random() - 0.5);
 
 
-    duplicatedeCharacters.forEach((character) => {
+
+    shuffledArray.forEach((character) => {
         const card = createCard(character);
         grid.appendChild(card);
 
