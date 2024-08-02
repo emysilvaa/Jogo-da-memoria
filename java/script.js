@@ -1,4 +1,4 @@
-const grid = document.querySelector('.grid');
+const grid = document.querySelector('.game-board');
 
 const characters = [
     'a',
@@ -21,16 +21,27 @@ const createElement = (tag, className) => {
 let firstCard = '';
 let secondCard = '';
 
+const checkEndGame = () => {
+    const disabledCards = document.querySelectorAll('disabled-card');
+    
+    if (disabledCards.length === 16) {
+        alert('Parabéns, você venceu!!');
+
+    }
+}
+
 const checkCards = () => {
     const firstcharacter = firstCard.getAttribute('data-character');
     const secondcharacter = secondCard.getAttribute('data-character');
     
     if (firstcharacter === secondcharacter) {
-        firstCard.firstChild.classList.add('disable-card');
-        secondCard.firstChildclassList.add('disable-card');
+        firstCard.firstChild.classList.add('disabled-card');
+        secondCard.firstChild.classList.add('disabled-card');
 
         firstCard = '';
         secondCard = '';
+
+        checkEndGame();
         
     } else {
         setTimeout(() => {
@@ -48,7 +59,6 @@ const revealCard = ({target}) => {
     if (target.parentNode.className.includes('reveal-card')) {
         return;
     }
-
     if (firstCard === '') {
         target.parentNode.classList.add('reveal-card');
         firstCard = target.parentNode;
@@ -80,12 +90,11 @@ const createCard = (character) => {
     return card;
 };
 
+
 const createBoard = () => {
     const duplicatedeCharacters = [ ...characters, ...characters ];
 
     const shuffledArray = duplicatedeCharacters.sort(() => Math.random() - 0.5);
-
-
 
     shuffledArray.forEach((character) => {
         const card = createCard(character);
@@ -93,9 +102,27 @@ const createBoard = () => {
 
 
     });
-
+    showAllCards();
 }
+
+const showAllCards = () => {
+    const cards = document.querySelectorAll('.card');
+    cards.forEach(card => {
+        card.classList.add('reveal-card');
+    });
+
+    setTimeout(() => {
+        cards.forEach(card => {
+            card.classList.remove('reveal-card');
+        });
+    }, 2000); 
+}
+
 createBoard();
+
+
+
+
 
 
 
